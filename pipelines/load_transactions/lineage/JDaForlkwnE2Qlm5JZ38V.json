@@ -1,0 +1,40 @@
+{
+  "id" : "JDaForlkwnE2Qlm5JZ38V",
+  "name" : "JDaForlkwnE2Qlm5JZ38V",
+  "component" : "Script",
+  "transformations" : [ ],
+  "inputs" : {
+    "g80txc1DfEB26EDj1W1P1" : {
+      "columns" : [ {
+        "name" : "acc_id",
+        "exprId" : 10456
+      }, {
+        "name" : "business_date",
+        "exprId" : 10457
+      }, {
+        "name" : "signed_tran_amount",
+        "exprId" : 10458
+      }, {
+        "name" : "bal_change",
+        "exprId" : 10459
+      } ]
+    }
+  },
+  "outputs" : {
+    "6rwlCzlV2sYOyrC8gPJDf" : {
+      "columns" : [ {
+        "name" : "acc_id",
+        "exprId" : 10456
+      }, {
+        "name" : "business_date",
+        "exprId" : 10457
+      }, {
+        "name" : "signed_tran_amount",
+        "exprId" : 10458
+      }, {
+        "name" : "bal_change",
+        "exprId" : 10459
+      } ]
+    }
+  }
+}

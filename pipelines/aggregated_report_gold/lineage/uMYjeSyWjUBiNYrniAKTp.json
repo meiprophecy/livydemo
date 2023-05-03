@@ -1,0 +1,61 @@
+{
+  "id" : "uMYjeSyWjUBiNYrniAKTp",
+  "name" : "uMYjeSyWjUBiNYrniAKTp",
+  "component" : "Filter",
+  "transformations" : [ {
+    "sources" : [ ],
+    "transformation" : "Filter((row_num#1747 = 1))"
+  } ],
+  "inputs" : {
+    "kkBl6Afw0mOBYtJv0jBy4" : {
+      "columns" : [ {
+        "name" : "acc_id",
+        "exprId" : 1741
+      }, {
+        "name" : "person_id",
+        "exprId" : 1742
+      }, {
+        "name" : "product_id",
+        "exprId" : 1743
+      }, {
+        "name" : "balance",
+        "exprId" : 1744
+      }, {
+        "name" : "business_date",
+        "exprId" : 1745
+      }, {
+        "name" : "import_ts",
+        "exprId" : 1746
+      }, {
+        "name" : "row_num",
+        "exprId" : 1747
+      } ]
+    }
+  },
+  "outputs" : {
+    "rpvQbtSJZpFVCAPG4IwdR" : {
+      "columns" : [ {
+        "name" : "acc_id",
+        "exprId" : 1741
+      }, {
+        "name" : "person_id",
+        "exprId" : 1742
+      }, {
+        "name" : "product_id",
+        "exprId" : 1743
+      }, {
+        "name" : "balance",
+        "exprId" : 1744
+      }, {
+        "name" : "business_date",
+        "exprId" : 1745
+      }, {
+        "name" : "import_ts",
+        "exprId" : 1746
+      }, {
+        "name" : "row_num",
+        "exprId" : 1747
+      } ]
+    }
+  }
+}

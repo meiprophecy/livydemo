@@ -1,0 +1,1519 @@
+{
+  "metainfo" : {
+    "id" : "1",
+    "language" : "scala",
+    "fabricId" : "838",
+    "frontEndLanguage" : "python",
+    "mode" : "batch",
+    "interimMode" : "Full",
+    "udfs" : {
+      "language" : "scala",
+      "udfs" : [ ]
+    },
+    "udafs" : {
+      "language" : "scala",
+      "code" : "package udfs\n\nimport org.apache.spark.sql.expressions._\nimport org.apache.spark.sql.types._\nimport org.apache.spark.sql._\n\n/**\n  * Here you can define your custom aggregate functions.\n  *\n  * Make sure to register your `udafs` in the register_udafs function below.\n  *\n  * Example:\n  *\n  * object GeometricMean extends UserDefinedAggregateFunction {\n  *   // This is the input fields for your aggregate function.\n  *   override def inputSchema: org.apache.spark.sql.types.StructType =\n  *     StructType(StructField(\"value\", DoubleType) :: Nil)\n  *\n  *   // This is the internal fields you keep for computing your aggregate.\n  *   override def bufferSchema: StructType = StructType(\n  *     StructField(\"count\", LongType) ::\n  *     StructField(\"product\", DoubleType) :: Nil\n  *   )\n  *\n  *   // This is the output type of your aggregatation function.\n  *   override def dataType: DataType = DoubleType\n  *\n  *   override def deterministic: Boolean = true\n  *\n  *   // This is the initial value for your buffer schema.\n  *   override def initialize(buffer: MutableAggregationBuffer): Unit = {\n  *     buffer(0) = 0L\n  *     buffer(1) = 1.0\n  *   }\n  *\n  *   // This is how to update your buffer schema given an input.\n  *   override def update(buffer: MutableAggregationBuffer, input: Row): Unit = {\n  *     buffer(0) = buffer.getAs[Long](0) + 1\n  *     buffer(1) = buffer.getAs[Double](1) * input.getAs[Double](0)\n  *   }\n  *\n  *   // This is how to merge two objects with the bufferSchema type.\n  *   override def merge(buffer1: MutableAggregationBuffer, buffer2: Row): Unit = {\n  *     buffer1(0) = buffer1.getAs[Long](0) + buffer2.getAs[Long](0)\n  *     buffer1(1) = buffer1.getAs[Double](1) * buffer2.getAs[Double](1)\n  *   }\n  *\n  *   // This is where you output the final value, given the final value of your bufferSchema.\n  *   override def evaluate(buffer: Row): Any = {\n  *     math.pow(buffer.getDouble(1), 1.toDouble / buffer.getLong(0))\n  *   }\n  * }\n  *\n  */\n\n\nobject UDAFs {\n  /**\n    * Registers UDAFs with Spark SQL\n    */\n  def registerUDAFs(spark: SparkSession): Unit = {\n    /**\n      * Example:\n      *\n      * spark.udf.register(\"gm\", GeometricMean)\n      *\n      */\n\n\n  }\n}\n"
+    },
+    "configuration" : {
+      "common" : {
+        "type" : "record",
+        "fields" : [ ]
+      },
+      "fabrics" : {
+        "recipes_fabric" : {
+          "type" : "record",
+          "fields" : [ ]
+        },
+        "anshuman" : {
+          "type" : "record",
+          "fields" : [ ]
+        },
+        "gamedayfabric" : {
+          "type" : "record",
+          "fields" : [ ]
+        },
+        "anshuman2" : {
+          "type" : "record",
+          "fields" : [ ]
+        }
+      }
+    },
+    "sparkConf" : [ ],
+    "hadoopConf" : [ ],
+    "codeMode" : "sparse",
+    "buildSystem" : "maven",
+    "externalDependencies" : [ ]
+  },
+  "connections" : [ {
+    "id" : "JTDUNVBafVbdISuv1jKo-",
+    "source" : "WGv_pBjGBT1_UhY3WVLfT",
+    "sourcePort" : "BvH5HOmvjAF82bSQlXA1x",
+    "target" : "LfhwLnuJkdXdjI9O8L3XA",
+    "targetPort" : "d6xZap_BYr0kXeSmjOsHO"
+  }, {
+    "id" : "z9Vw_kno7SWkvZYQglWlz",
+    "source" : "lbrMLFEj_RynkdWL2VTHl",
+    "sourcePort" : "xsApV3RwDQhO--F4lhrPD",
+    "target" : "iWcTqlGxtBqg8udywW6TJ$$zGsOC80i5rlJoFxYiciwE",
+    "targetPort" : "Yxvt2Fj8v6YEQBnDK49m7$$qW7mrlV8q_r-v_CThQOKE"
+  }, {
+    "id" : "Z2Ro2QzbaeWJ2oNU9vo6Z",
+    "source" : "iWcTqlGxtBqg8udywW6TJ$$zGsOC80i5rlJoFxYiciwE",
+    "sourcePort" : "jHfbzncT-MFI0UhxrwgeA$$SQShKJvmsYyEkBde0Yx3Y",
+    "target" : "LbWvrUmPGvCxHWdVlbw60$$7O2Bj53OQQ1FeV4suUjdU",
+    "targetPort" : "l1QpTv2j8cNdb79Bc2ajj$$3xlk1A033rlCHpVtzi3_u"
+  }, {
+    "id" : "hMj0CpbAJFY4H_ycl_2BW",
+    "source" : "LfhwLnuJkdXdjI9O8L3XA",
+    "sourcePort" : "p1pdsq4rQbghZYq43f6qS",
+    "target" : "y-LiT_AtAwW4wV6j1V9Ka$$Ne1ePILs06_UmwhxXiiW9",
+    "targetPort" : "7fO_3YJzoYKKym0Q8ATqT$$puG65BOlJ4eqxavpYjriw"
+  }, {
+    "id" : "cbuLiIoYDfRq8Yrf1Ebvu",
+    "source" : "y-LiT_AtAwW4wV6j1V9Ka$$Ne1ePILs06_UmwhxXiiW9",
+    "sourcePort" : "S4J4ahsYlyQQG_kgeAEtx$$ZxB5i-gLTVr2DITFgL4o8",
+    "target" : "1WVjHdzvhwPkYL_Qzzw3w$$dxkzucaDDz-1gXRHosNpE",
+    "targetPort" : "oDB31D1Qae5Af-m6IUm1n$$Q6AOMsYD-BKsQTYn2jOMy"
+  }, {
+    "id" : "5xlQKxBOrDRA9yVhv75yc",
+    "source" : "0QngFxTz5KX_t6DeEE7Dw$$N72GZSvWGzq5MK9Dc4FLj",
+    "sourcePort" : "H3G9Nsbp55FqpSTFSTwGb$$HJPEBtWtIiDB4JdKbbAJy",
+    "target" : "olD7ndfIWBueeNUyi3q_j$$6UYOxj1nFoTGDIrqDcR3F",
+    "targetPort" : "1efwGngnWyOU0y3pXtRjc$$-jdhJ5RnJPvfW67AT2tw7"
+  }, {
+    "id" : "Qq0l3FoUrCjf7vApo4700",
+    "source" : "olD7ndfIWBueeNUyi3q_j$$6UYOxj1nFoTGDIrqDcR3F",
+    "sourcePort" : "hAtDCkFJ43pt0wG_q09hD$$xnIQgzdaGO3V1MbGtyJRr",
+    "target" : "1WVjHdzvhwPkYL_Qzzw3w$$dxkzucaDDz-1gXRHosNpE",
+    "targetPort" : "M9nH8uVU_KXeYtROVUGlt$$S1qSel0Fpnb-Y2qbkHgYG"
+  }, {
+    "id" : "lRJPAiM9sVvh-1dpBxbch",
+    "source" : "No-C64doiSU7K660l6-3-$$Id51SX5WLECbnQYrQUAhL",
+    "sourcePort" : "ZqCWzWAbty-OLelZTWQDO$$F1KQL7euEH8LbTRW2NTZ2",
+    "target" : "5LstTl-x-VT2cuoWzdHFF$$-HDAo1h7_ij2PnQOGdkIr",
+    "targetPort" : "JEnowiFYyg8cFRuBsLFwR$$GZnmw-UWu406jWcWnb6Cr"
+  }, {
+    "id" : "m_aUqzdiUNfEDGCorgIPu",
+    "source" : "1WVjHdzvhwPkYL_Qzzw3w$$dxkzucaDDz-1gXRHosNpE",
+    "sourcePort" : "VeFbIduXZfPTgcG2kzHO_$$QLLJL4cpm1uTF3RcnMtB8",
+    "target" : "NnCtz-z_hpQd6nz3dv3U1$$FNnheoBctwWV6RX-COTiX",
+    "targetPort" : "MVDubNnfX6k53bnZNjxAk$$zdW6uRyYr0D52HOp1s_Vf"
+  }, {
+    "id" : "cb2G4RgXafLuaaxdoyFb1",
+    "source" : "5LstTl-x-VT2cuoWzdHFF$$-HDAo1h7_ij2PnQOGdkIr",
+    "sourcePort" : "O-hTC8Y9iFKqXuSY8gWT5$$wpN6Y-RoMereKYXCbUx3U",
+    "target" : "NnCtz-z_hpQd6nz3dv3U1$$FNnheoBctwWV6RX-COTiX",
+    "targetPort" : "sqbdb_PKqpZCN4Y1JCDry$$UYb2OPhV8Q863debSBaEF"
+  }, {
+    "id" : "EeWTGHjnhYHH8MK-Wduox",
+    "source" : "NnCtz-z_hpQd6nz3dv3U1$$FNnheoBctwWV6RX-COTiX",
+    "sourcePort" : "PN2YQkE3YHGmFX9YC6nIr$$99owy4lVnC3hXqrxhiUcP",
+    "target" : "0Y4HFgaz2aIamlTwb65h-$$pjhWdDO33hFLIe5rpLfD1",
+    "targetPort" : "xguR3YggmM9_D52jLityN$$xv1K6ed2u6gB9effIljlz"
+  }, {
+    "id" : "AJIMu2D_AaDnMI4zSZ8Bw",
+    "source" : "LbWvrUmPGvCxHWdVlbw60$$7O2Bj53OQQ1FeV4suUjdU",
+    "sourcePort" : "z0fyBwCjFSWA7WFPifOLC$$4imwsq-jSTpxY3WMyYUKv",
+    "target" : "y-LiT_AtAwW4wV6j1V9Ka$$Ne1ePILs06_UmwhxXiiW9",
+    "targetPort" : "_Zukqci3rcoAaG7sVQUL7$$d5WNnj6dqImzhuFaMnT9D"
+  } ],
+  "processes" : {
+    "LbWvrUmPGvCxHWdVlbw60$$7O2Bj53OQQ1FeV4suUjdU" : {
+      "id" : "LbWvrUmPGvCxHWdVlbw60$$7O2Bj53OQQ1FeV4suUjdU",
+      "component" : "Aggregate",
+      "metadata" : {
+        "label" : "totals",
+        "slug" : "totals",
+        "x" : -793.5,
+        "y" : -86.5,
+        "language" : "scala",
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "l1QpTv2j8cNdb79Bc2ajj$$3xlk1A033rlCHpVtzi3_u",
+          "slug" : "in"
+        } ],
+        "outputs" : [ {
+          "id" : "z0fyBwCjFSWA7WFPifOLC$$4imwsq-jSTpxY3WMyYUKv",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ]
+      },
+      "properties" : {
+        "doPivot" : false,
+        "aggregate" : [ {
+          "_row_id" : "",
+          "target" : "total_inflows",
+          "expression" : {
+            "format" : "python",
+            "expression" : "sum(when(col('tran_type') == 'CREDIT', col('tran_amount')).otherwise(0))"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : "",
+          "target" : "total_outflows",
+          "expression" : {
+            "format" : "python",
+            "expression" : "sum(when(col('tran_type') == 'DEBIT', col('tran_amount')).otherwise(0))"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : "",
+          "target" : "interest_inflow",
+          "expression" : {
+            "format" : "python",
+            "expression" : "sum(when(col('tran_type') == 'INTEREST', col('tran_amount')).otherwise(0))"
+          },
+          "description" : ""
+        } ],
+        "pivotColumn" : null,
+        "pivotValues" : [ ],
+        "activeTab" : "aggregate",
+        "columnsSelector" : [ "l1QpTv2j8cNdb79Bc2ajj$$3xlk1A033rlCHpVtzi3_u##business_date", "l1QpTv2j8cNdb79Bc2ajj$$3xlk1A033rlCHpVtzi3_u##acc_id", "l1QpTv2j8cNdb79Bc2ajj$$3xlk1A033rlCHpVtzi3_u##tran_type", "l1QpTv2j8cNdb79Bc2ajj$$3xlk1A033rlCHpVtzi3_u##tran_amount" ],
+        "groupBy" : [ {
+          "_row_id" : null,
+          "target" : "business_date",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"business_date\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "acc_id",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"acc_id\")"
+          },
+          "description" : ""
+        } ]
+      }
+    },
+    "0Y4HFgaz2aIamlTwb65h-$$pjhWdDO33hFLIe5rpLfD1" : {
+      "id" : "0Y4HFgaz2aIamlTwb65h-$$pjhWdDO33hFLIe5rpLfD1",
+      "component" : "Target",
+      "metadata" : {
+        "label" : "Report",
+        "slug" : "Report",
+        "x" : 81.3125,
+        "y" : 196.75,
+        "language" : "scala",
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "xguR3YggmM9_D52jLityN$$xv1K6ed2u6gB9effIljlz",
+          "slug" : "in"
+        } ],
+        "outputs" : [ ],
+        "selectedInputFields" : [ ]
+      },
+      "properties" : {
+        "datasetId" : "4088/datasets/gold_fin_reporting"
+      }
+    },
+    "0QngFxTz5KX_t6DeEE7Dw$$N72GZSvWGzq5MK9Dc4FLj" : {
+      "id" : "0QngFxTz5KX_t6DeEE7Dw$$N72GZSvWGzq5MK9Dc4FLj",
+      "component" : "Source",
+      "metadata" : {
+        "label" : "Products",
+        "slug" : "Products",
+        "x" : -1186.75,
+        "y" : 59,
+        "language" : "scala",
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "H3G9Nsbp55FqpSTFSTwGb$$HJPEBtWtIiDB4JdKbbAJy",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ]
+      },
+      "properties" : {
+        "datasetId" : "4088/datasets/products_silver"
+      }
+    },
+    "1WVjHdzvhwPkYL_Qzzw3w$$dxkzucaDDz-1gXRHosNpE" : {
+      "id" : "1WVjHdzvhwPkYL_Qzzw3w$$dxkzucaDDz-1gXRHosNpE",
+      "component" : "Join",
+      "metadata" : {
+        "label" : "Join_products",
+        "slug" : "Join_products",
+        "x" : -267.75,
+        "y" : 44,
+        "language" : "scala",
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "oDB31D1Qae5Af-m6IUm1n$$Q6AOMsYD-BKsQTYn2jOMy",
+          "slug" : "in0"
+        }, {
+          "id" : "M9nH8uVU_KXeYtROVUGlt$$S1qSel0Fpnb-Y2qbkHgYG",
+          "slug" : "in1"
+        } ],
+        "outputs" : [ {
+          "id" : "VeFbIduXZfPTgcG2kzHO_$$QLLJL4cpm1uTF3RcnMtB8",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ]
+      },
+      "properties" : {
+        "conditions" : [ {
+          "alias" : "in1",
+          "expression" : {
+            "format" : "python",
+            "expression" : "(col(\"in0.product_id\") == col(\"in1.id\")) & (col(\"in0.business_date\") == col(\"in1.business_date\"))"
+          },
+          "joinType" : "inner"
+        } ],
+        "expressions" : [ {
+          "_row_id" : null,
+          "target" : "acc_id",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in0.acc_id\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "business_date",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in0.business_date\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "person_id",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in0.person_id\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "product_id",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in0.product_id\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "balance",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in0.balance\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "total_inflows",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in0.total_inflows\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "total_outflows",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in0.total_outflows\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "interest_inflow",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in0.interest_inflow\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "product_name",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in1.name\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "product_slug",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in1.slug\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "product_bonus_rate",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in1.bonus_rate\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "product_lock_in_period",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in1.lock_in_period\")"
+          },
+          "description" : ""
+        } ],
+        "activeTab" : "expressions",
+        "columnsSelector" : [ "oDB31D1Qae5Af-m6IUm1n$$Q6AOMsYD-BKsQTYn2jOMy##product_id", "M9nH8uVU_KXeYtROVUGlt$$S1qSel0Fpnb-Y2qbkHgYG##id", "oDB31D1Qae5Af-m6IUm1n$$Q6AOMsYD-BKsQTYn2jOMy##business_date", "M9nH8uVU_KXeYtROVUGlt$$S1qSel0Fpnb-Y2qbkHgYG##business_date", "oDB31D1Qae5Af-m6IUm1n$$Q6AOMsYD-BKsQTYn2jOMy##acc_id", "oDB31D1Qae5Af-m6IUm1n$$Q6AOMsYD-BKsQTYn2jOMy##business_date", "oDB31D1Qae5Af-m6IUm1n$$Q6AOMsYD-BKsQTYn2jOMy##person_id", "oDB31D1Qae5Af-m6IUm1n$$Q6AOMsYD-BKsQTYn2jOMy##product_id", "oDB31D1Qae5Af-m6IUm1n$$Q6AOMsYD-BKsQTYn2jOMy##balance", "oDB31D1Qae5Af-m6IUm1n$$Q6AOMsYD-BKsQTYn2jOMy##total_inflows", "oDB31D1Qae5Af-m6IUm1n$$Q6AOMsYD-BKsQTYn2jOMy##total_outflows", "oDB31D1Qae5Af-m6IUm1n$$Q6AOMsYD-BKsQTYn2jOMy##interest_inflow", "M9nH8uVU_KXeYtROVUGlt$$S1qSel0Fpnb-Y2qbkHgYG##name", "M9nH8uVU_KXeYtROVUGlt$$S1qSel0Fpnb-Y2qbkHgYG##slug", "M9nH8uVU_KXeYtROVUGlt$$S1qSel0Fpnb-Y2qbkHgYG##bonus_rate", "M9nH8uVU_KXeYtROVUGlt$$S1qSel0Fpnb-Y2qbkHgYG##lock_in_period" ],
+        "whereClause" : null,
+        "headAlias" : "in0"
+      }
+    },
+    "y-LiT_AtAwW4wV6j1V9Ka$$Ne1ePILs06_UmwhxXiiW9" : {
+      "id" : "y-LiT_AtAwW4wV6j1V9Ka$$Ne1ePILs06_UmwhxXiiW9",
+      "component" : "Join",
+      "metadata" : {
+        "label" : "join_transactions",
+        "slug" : "join_transactions",
+        "x" : -379.75,
+        "y" : -187,
+        "language" : "scala",
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "7fO_3YJzoYKKym0Q8ATqT$$puG65BOlJ4eqxavpYjriw",
+          "slug" : "in0"
+        }, {
+          "id" : "_Zukqci3rcoAaG7sVQUL7$$d5WNnj6dqImzhuFaMnT9D",
+          "slug" : "in1"
+        } ],
+        "outputs" : [ {
+          "id" : "S4J4ahsYlyQQG_kgeAEtx$$ZxB5i-gLTVr2DITFgL4o8",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ]
+      },
+      "properties" : {
+        "conditions" : [ {
+          "alias" : "in1",
+          "expression" : {
+            "format" : "python",
+            "expression" : "(col(\"in0.acc_id\") == col(\"in1.acc_id\")) & (col(\"in0.business_date\") == col(\"in1.business_date\"))"
+          },
+          "joinType" : "inner"
+        } ],
+        "expressions" : [ {
+          "_row_id" : null,
+          "target" : "acc_id",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in0.acc_id\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "business_date",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in0.business_date\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "person_id",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in0.person_id\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "product_id",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in0.product_id\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "balance",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in0.balance\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "total_inflows",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in1.total_inflows\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "total_outflows",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in1.total_outflows\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "interest_inflow",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in1.interest_inflow\")"
+          },
+          "description" : ""
+        } ],
+        "activeTab" : "expressions",
+        "columnsSelector" : [ "7fO_3YJzoYKKym0Q8ATqT$$puG65BOlJ4eqxavpYjriw##acc_id", "_Zukqci3rcoAaG7sVQUL7$$d5WNnj6dqImzhuFaMnT9D##acc_id", "7fO_3YJzoYKKym0Q8ATqT$$puG65BOlJ4eqxavpYjriw##business_date", "_Zukqci3rcoAaG7sVQUL7$$d5WNnj6dqImzhuFaMnT9D##business_date", "7fO_3YJzoYKKym0Q8ATqT$$puG65BOlJ4eqxavpYjriw##acc_id", "7fO_3YJzoYKKym0Q8ATqT$$puG65BOlJ4eqxavpYjriw##business_date", "7fO_3YJzoYKKym0Q8ATqT$$puG65BOlJ4eqxavpYjriw##person_id", "7fO_3YJzoYKKym0Q8ATqT$$puG65BOlJ4eqxavpYjriw##product_id", "7fO_3YJzoYKKym0Q8ATqT$$puG65BOlJ4eqxavpYjriw##balance", "_Zukqci3rcoAaG7sVQUL7$$d5WNnj6dqImzhuFaMnT9D##total_inflows", "_Zukqci3rcoAaG7sVQUL7$$d5WNnj6dqImzhuFaMnT9D##total_outflows", "_Zukqci3rcoAaG7sVQUL7$$d5WNnj6dqImzhuFaMnT9D##interest_inflow" ],
+        "whereClause" : null,
+        "headAlias" : "in0"
+      }
+    },
+    "LfhwLnuJkdXdjI9O8L3XA" : {
+      "id" : "LfhwLnuJkdXdjI9O8L3XA",
+      "component" : "Subgraph",
+      "metadata" : {
+        "label" : "get_latest",
+        "slug" : "get_latest",
+        "x" : -570,
+        "y" : -245,
+        "language" : "scala",
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "d6xZap_BYr0kXeSmjOsHO",
+          "slug" : "in0"
+        } ],
+        "outputs" : [ {
+          "id" : "p1pdsq4rQbghZYq43f6qS",
+          "slug" : "out0"
+        } ],
+        "selectedInputFields" : [ ]
+      },
+      "properties" : { },
+      "connections" : [ {
+        "id" : "nkFAiK3DJq1zge1c5ZE_7",
+        "source" : "LfhwLnuJkdXdjI9O8L3XA",
+        "sourcePort" : "d6xZap_BYr0kXeSmjOsHO",
+        "target" : "naLu3T9o4T20Mn7YaLHPf",
+        "targetPort" : "Ji7c6LnTpBGuYQWDCDzT8"
+      }, {
+        "id" : "8TPJKlawqkxN_dx-OEi0s",
+        "source" : "naLu3T9o4T20Mn7YaLHPf",
+        "sourcePort" : "jxtNGuZFsMIwvwcy9zElm",
+        "target" : "uMYjeSyWjUBiNYrniAKTp",
+        "targetPort" : "kkBl6Afw0mOBYtJv0jBy4"
+      }, {
+        "id" : "VWeZmIt9pEXO9VOMqflqz",
+        "source" : "uMYjeSyWjUBiNYrniAKTp",
+        "sourcePort" : "rpvQbtSJZpFVCAPG4IwdR",
+        "target" : "VpjlQ65rkjeUEmg08Fi3D$$5dnsF2gU9w1kT8fGcd4M6",
+        "targetPort" : "DFct97hj1FWFbzaxGW2Aa$$iAwwRsNBFlHNAZD9XSryr"
+      }, {
+        "id" : "bwYdT9hVjcbWbFiTULN3a",
+        "source" : "VpjlQ65rkjeUEmg08Fi3D$$5dnsF2gU9w1kT8fGcd4M6",
+        "sourcePort" : "g6T5i0PTgiAU7hCJ6S_3K$$qDXjR39M0c8ZsNdw52UBz",
+        "target" : "LfhwLnuJkdXdjI9O8L3XA",
+        "targetPort" : "p1pdsq4rQbghZYq43f6qS"
+      } ],
+      "processes" : {
+        "uMYjeSyWjUBiNYrniAKTp" : {
+          "id" : "uMYjeSyWjUBiNYrniAKTp",
+          "component" : "Filter",
+          "metadata" : {
+            "label" : "Filter_1",
+            "slug" : "Filter_1",
+            "x" : 434,
+            "y" : 279,
+            "language" : "scala",
+            "phase" : 0,
+            "cache" : false,
+            "detailedStats" : false
+          },
+          "ports" : {
+            "inputs" : [ {
+              "id" : "kkBl6Afw0mOBYtJv0jBy4",
+              "slug" : "in"
+            } ],
+            "outputs" : [ {
+              "id" : "rpvQbtSJZpFVCAPG4IwdR",
+              "slug" : "out"
+            } ],
+            "selectedInputFields" : [ ]
+          },
+          "properties" : {
+            "columnsSelector" : [ "kkBl6Afw0mOBYtJv0jBy4##row_num" ],
+            "condition" : {
+              "format" : "python",
+              "expression" : "(col(\"row_num\") == lit(1))"
+            }
+          }
+        },
+        "VpjlQ65rkjeUEmg08Fi3D$$5dnsF2gU9w1kT8fGcd4M6" : {
+          "id" : "VpjlQ65rkjeUEmg08Fi3D$$5dnsF2gU9w1kT8fGcd4M6",
+          "component" : "SchemaTransform",
+          "metadata" : {
+            "label" : "SchemaTransform_1",
+            "slug" : "SchemaTransform_1",
+            "x" : 673.5,
+            "y" : 252.5,
+            "language" : "scala",
+            "phase" : 0,
+            "cache" : false,
+            "detailedStats" : false
+          },
+          "ports" : {
+            "inputs" : [ {
+              "id" : "DFct97hj1FWFbzaxGW2Aa$$iAwwRsNBFlHNAZD9XSryr",
+              "slug" : "in"
+            } ],
+            "outputs" : [ {
+              "id" : "g6T5i0PTgiAU7hCJ6S_3K$$qDXjR39M0c8ZsNdw52UBz",
+              "slug" : "out"
+            } ],
+            "selectedInputFields" : [ ]
+          },
+          "properties" : {
+            "columnsSelector" : [ "DFct97hj1FWFbzaxGW2Aa$$iAwwRsNBFlHNAZD9XSryr##row_num" ],
+            "transformations" : [ {
+              "kind" : "DropColumn",
+              "DropColumn" : {
+                "sourceColumn" : "row_num"
+              },
+              "RenameColumn" : {
+                "sourceColumn" : "",
+                "targetColumn" : ""
+              },
+              "AddReplaceColumn" : {
+                "sourceColumn" : "",
+                "expression" : {
+                  "format" : "scala",
+                  "expression" : ""
+                }
+              }
+            } ]
+          }
+        },
+        "naLu3T9o4T20Mn7YaLHPf" : {
+          "id" : "naLu3T9o4T20Mn7YaLHPf",
+          "component" : "WindowFunction",
+          "metadata" : {
+            "label" : "WindowFunction_1",
+            "slug" : "WindowFunction_1",
+            "x" : 195,
+            "y" : 304,
+            "language" : "scala",
+            "phase" : 0,
+            "cache" : false,
+            "detailedStats" : false
+          },
+          "ports" : {
+            "inputs" : [ {
+              "id" : "Ji7c6LnTpBGuYQWDCDzT8",
+              "slug" : "in"
+            } ],
+            "outputs" : [ {
+              "id" : "jxtNGuZFsMIwvwcy9zElm",
+              "slug" : "out"
+            } ],
+            "selectedInputFields" : [ ]
+          },
+          "properties" : {
+            "userSpecifiedEnd" : null,
+            "expressionColumns" : [ {
+              "_row_id" : null,
+              "target" : "row_num",
+              "expression" : {
+                "format" : "python",
+                "expression" : "row_number()"
+              },
+              "description" : ""
+            } ],
+            "frameType" : "row",
+            "partitionColumns" : [ {
+              "format" : "python",
+              "expression" : "col(\"acc_id\")"
+            }, {
+              "format" : "python",
+              "expression" : "col(\"business_date\")"
+            } ],
+            "activeTab" : "windowUse",
+            "columnsSelector" : [ "Ji7c6LnTpBGuYQWDCDzT8##acc_id", "Ji7c6LnTpBGuYQWDCDzT8##business_date", "Ji7c6LnTpBGuYQWDCDzT8##import_ts" ],
+            "specifyFrame" : false,
+            "frameStart" : null,
+            "orderColumns" : [ {
+              "expression" : {
+                "format" : "python",
+                "expression" : "col(\"import_ts\")"
+              },
+              "sortType" : "desc"
+            } ],
+            "frameEnd" : null,
+            "userSpecifiedStart" : null
+          }
+        }
+      }
+    },
+    "NnCtz-z_hpQd6nz3dv3U1$$FNnheoBctwWV6RX-COTiX" : {
+      "id" : "NnCtz-z_hpQd6nz3dv3U1$$FNnheoBctwWV6RX-COTiX",
+      "component" : "Join",
+      "metadata" : {
+        "label" : "Join_people",
+        "slug" : "Join_people",
+        "x" : -130.6875,
+        "y" : 197.75,
+        "language" : "scala",
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "MVDubNnfX6k53bnZNjxAk$$zdW6uRyYr0D52HOp1s_Vf",
+          "slug" : "in0"
+        }, {
+          "id" : "sqbdb_PKqpZCN4Y1JCDry$$UYb2OPhV8Q863debSBaEF",
+          "slug" : "in1"
+        } ],
+        "outputs" : [ {
+          "id" : "PN2YQkE3YHGmFX9YC6nIr$$99owy4lVnC3hXqrxhiUcP",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ]
+      },
+      "properties" : {
+        "conditions" : [ {
+          "alias" : "in1",
+          "expression" : {
+            "format" : "python",
+            "expression" : "(col(\"in0.person_id\") == col(\"in1.id\")) & (col(\"in0.business_date\") == col(\"in1.business_date\"))"
+          },
+          "joinType" : "inner"
+        } ],
+        "expressions" : [ {
+          "_row_id" : null,
+          "target" : "acc_id",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in0.acc_id\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "business_date",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in0.business_date\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "person_id",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in0.person_id\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "product_id",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in0.product_id\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "balance",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in0.balance\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "total_inflows",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in0.total_inflows\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "total_outflows",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in0.total_outflows\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "interest_inflow",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in0.interest_inflow\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "product_name",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in0.product_name\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "product_slug",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in0.product_slug\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "product_bonus_rate",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in0.product_bonus_rate\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "product_lock_in_period",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in0.product_lock_in_period\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "person_email",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in1.email\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "person_name",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in1.name\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "person_updated_at",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in1.updated_at\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "person_primary_address_line1",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in1.primary_address_line1\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "person_primary_address_line2",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in1.primary_address_line2\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "person_primary_postal_code",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in1.primary_postal_code\")"
+          },
+          "description" : ""
+        }, {
+          "_row_id" : null,
+          "target" : "person_alternate_addresses",
+          "expression" : {
+            "format" : "python",
+            "expression" : "col(\"in1.alternate_addresses\")"
+          },
+          "description" : ""
+        } ],
+        "activeTab" : "expressions",
+        "columnsSelector" : [ "MVDubNnfX6k53bnZNjxAk$$zdW6uRyYr0D52HOp1s_Vf##person_id", "sqbdb_PKqpZCN4Y1JCDry$$UYb2OPhV8Q863debSBaEF##id", "MVDubNnfX6k53bnZNjxAk$$zdW6uRyYr0D52HOp1s_Vf##business_date", "sqbdb_PKqpZCN4Y1JCDry$$UYb2OPhV8Q863debSBaEF##business_date", "MVDubNnfX6k53bnZNjxAk$$zdW6uRyYr0D52HOp1s_Vf##acc_id", "MVDubNnfX6k53bnZNjxAk$$zdW6uRyYr0D52HOp1s_Vf##business_date", "MVDubNnfX6k53bnZNjxAk$$zdW6uRyYr0D52HOp1s_Vf##person_id", "MVDubNnfX6k53bnZNjxAk$$zdW6uRyYr0D52HOp1s_Vf##product_id", "MVDubNnfX6k53bnZNjxAk$$zdW6uRyYr0D52HOp1s_Vf##balance", "MVDubNnfX6k53bnZNjxAk$$zdW6uRyYr0D52HOp1s_Vf##total_inflows", "MVDubNnfX6k53bnZNjxAk$$zdW6uRyYr0D52HOp1s_Vf##total_outflows", "MVDubNnfX6k53bnZNjxAk$$zdW6uRyYr0D52HOp1s_Vf##interest_inflow", "MVDubNnfX6k53bnZNjxAk$$zdW6uRyYr0D52HOp1s_Vf##product_name", "MVDubNnfX6k53bnZNjxAk$$zdW6uRyYr0D52HOp1s_Vf##product_slug", "MVDubNnfX6k53bnZNjxAk$$zdW6uRyYr0D52HOp1s_Vf##product_bonus_rate", "MVDubNnfX6k53bnZNjxAk$$zdW6uRyYr0D52HOp1s_Vf##product_lock_in_period", "sqbdb_PKqpZCN4Y1JCDry$$UYb2OPhV8Q863debSBaEF##email", "sqbdb_PKqpZCN4Y1JCDry$$UYb2OPhV8Q863debSBaEF##name", "sqbdb_PKqpZCN4Y1JCDry$$UYb2OPhV8Q863debSBaEF##updated_at", "sqbdb_PKqpZCN4Y1JCDry$$UYb2OPhV8Q863debSBaEF##primary_address_line1", "sqbdb_PKqpZCN4Y1JCDry$$UYb2OPhV8Q863debSBaEF##primary_address_line2", "sqbdb_PKqpZCN4Y1JCDry$$UYb2OPhV8Q863debSBaEF##primary_postal_code", "sqbdb_PKqpZCN4Y1JCDry$$UYb2OPhV8Q863debSBaEF##alternate_addresses" ],
+        "whereClause" : null,
+        "headAlias" : "in0"
+      }
+    },
+    "WGv_pBjGBT1_UhY3WVLfT" : {
+      "id" : "WGv_pBjGBT1_UhY3WVLfT",
+      "component" : "Source",
+      "metadata" : {
+        "label" : "acc_status",
+        "slug" : "acc_status",
+        "x" : -1184,
+        "y" : -245,
+        "language" : "scala",
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "BvH5HOmvjAF82bSQlXA1x",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ]
+      },
+      "properties" : {
+        "datasetId" : "4088/datasets/acc_status_silver"
+      }
+    },
+    "lbrMLFEj_RynkdWL2VTHl" : {
+      "id" : "lbrMLFEj_RynkdWL2VTHl",
+      "component" : "Source",
+      "metadata" : {
+        "label" : "Transactions",
+        "slug" : "Transactions",
+        "x" : -1185,
+        "y" : -88,
+        "language" : "scala",
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "xsApV3RwDQhO--F4lhrPD",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ]
+      },
+      "properties" : {
+        "datasetId" : "4088/datasets/transactions_silver"
+      }
+    },
+    "iWcTqlGxtBqg8udywW6TJ$$zGsOC80i5rlJoFxYiciwE" : {
+      "id" : "iWcTqlGxtBqg8udywW6TJ$$zGsOC80i5rlJoFxYiciwE",
+      "component" : "Subgraph",
+      "metadata" : {
+        "label" : "get_latest_1",
+        "slug" : "get_latest_1",
+        "x" : -968,
+        "y" : -87,
+        "language" : "scala",
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "Yxvt2Fj8v6YEQBnDK49m7$$qW7mrlV8q_r-v_CThQOKE",
+          "slug" : "in0"
+        } ],
+        "outputs" : [ {
+          "id" : "jHfbzncT-MFI0UhxrwgeA$$SQShKJvmsYyEkBde0Yx3Y",
+          "slug" : "out0"
+        } ],
+        "selectedInputFields" : [ ]
+      },
+      "properties" : { },
+      "connections" : [ {
+        "id" : "t_CeVoEboysvjtssd6KVf",
+        "source" : "iWcTqlGxtBqg8udywW6TJ$$zGsOC80i5rlJoFxYiciwE",
+        "sourcePort" : "Yxvt2Fj8v6YEQBnDK49m7$$qW7mrlV8q_r-v_CThQOKE",
+        "target" : "cdonco1qZOWMvUuLxqa-5$$n8ES6e4DpYnP-DWAaYA_d",
+        "targetPort" : "VTUOcAVFTDOAj__r6J1hS$$ErsoHioTXz3g8fhG_6CIU"
+      }, {
+        "id" : "zJlMBnZ8PHQkfevhLaP1D",
+        "source" : "cdonco1qZOWMvUuLxqa-5$$n8ES6e4DpYnP-DWAaYA_d",
+        "sourcePort" : "l1ZxskHbT3at-6Pi4rQ4b$$WKv5jhcaQmFTWzj8VdUFD",
+        "target" : "BU8kXHRTi1pGSBZ4M9b9T$$e2AKQsF2sW36fmiVIJVei",
+        "targetPort" : "WDIErQy67dD3M5H7SHZ6Z$$Latro__ggg0kpKV0c6Tp6"
+      }, {
+        "id" : "gs53gIYjVg8lYCpQQEQiM",
+        "source" : "BU8kXHRTi1pGSBZ4M9b9T$$e2AKQsF2sW36fmiVIJVei",
+        "sourcePort" : "6Puv-e7U9FuZdqoQ5J1Mm$$vVE9ryJlScFn7Q39GA1iE",
+        "target" : "pQNKqjTGbZpDWZPqUb5uV$$Hgf2baXf-plhL_TPAUeaJ",
+        "targetPort" : "kuZlcqFKcNnvUOyt-ZBmh$$muy6n1NOGDktv3YWIb3qN"
+      }, {
+        "id" : "Gpk0aUrBN6LtAa6L5pyGv",
+        "source" : "pQNKqjTGbZpDWZPqUb5uV$$Hgf2baXf-plhL_TPAUeaJ",
+        "sourcePort" : "6rfFMuRTiBJPygiF7WR7M$$qCWhq1Iy0aQy83Dqs4BXr",
+        "target" : "iWcTqlGxtBqg8udywW6TJ$$zGsOC80i5rlJoFxYiciwE",
+        "targetPort" : "jHfbzncT-MFI0UhxrwgeA$$SQShKJvmsYyEkBde0Yx3Y"
+      } ],
+      "processes" : {
+        "pQNKqjTGbZpDWZPqUb5uV$$Hgf2baXf-plhL_TPAUeaJ" : {
+          "id" : "pQNKqjTGbZpDWZPqUb5uV$$Hgf2baXf-plhL_TPAUeaJ",
+          "component" : "SchemaTransform",
+          "metadata" : {
+            "label" : "SchemaTransform_1_1",
+            "slug" : "SchemaTransform_1_1",
+            "x" : 693.5,
+            "y" : 272.5,
+            "language" : "scala",
+            "phase" : 0,
+            "cache" : false,
+            "detailedStats" : false
+          },
+          "ports" : {
+            "inputs" : [ {
+              "id" : "kuZlcqFKcNnvUOyt-ZBmh$$muy6n1NOGDktv3YWIb3qN",
+              "slug" : "in"
+            } ],
+            "outputs" : [ {
+              "id" : "6rfFMuRTiBJPygiF7WR7M$$qCWhq1Iy0aQy83Dqs4BXr",
+              "slug" : "out"
+            } ],
+            "selectedInputFields" : [ ]
+          },
+          "properties" : {
+            "columnsSelector" : [ "DFct97hj1FWFbzaxGW2Aa$$iAwwRsNBFlHNAZD9XSryr##row_num" ],
+            "transformations" : [ {
+              "kind" : "DropColumn",
+              "DropColumn" : {
+                "sourceColumn" : "row_num"
+              },
+              "RenameColumn" : {
+                "sourceColumn" : "",
+                "targetColumn" : ""
+              },
+              "AddReplaceColumn" : {
+                "sourceColumn" : "",
+                "expression" : {
+                  "format" : "scala",
+                  "expression" : ""
+                }
+              }
+            } ]
+          }
+        },
+        "BU8kXHRTi1pGSBZ4M9b9T$$e2AKQsF2sW36fmiVIJVei" : {
+          "id" : "BU8kXHRTi1pGSBZ4M9b9T$$e2AKQsF2sW36fmiVIJVei",
+          "component" : "Filter",
+          "metadata" : {
+            "label" : "Filter_1_1",
+            "slug" : "Filter_1_1",
+            "x" : 425,
+            "y" : 316,
+            "language" : "scala",
+            "phase" : 0,
+            "cache" : false,
+            "detailedStats" : false
+          },
+          "ports" : {
+            "inputs" : [ {
+              "id" : "WDIErQy67dD3M5H7SHZ6Z$$Latro__ggg0kpKV0c6Tp6",
+              "slug" : "in"
+            } ],
+            "outputs" : [ {
+              "id" : "6Puv-e7U9FuZdqoQ5J1Mm$$vVE9ryJlScFn7Q39GA1iE",
+              "slug" : "out"
+            } ],
+            "selectedInputFields" : [ ]
+          },
+          "properties" : {
+            "columnsSelector" : [ "WDIErQy67dD3M5H7SHZ6Z$$Latro__ggg0kpKV0c6Tp6##row_num", "WDIErQy67dD3M5H7SHZ6Z$$Latro__ggg0kpKV0c6Tp6##tran_id" ],
+            "condition" : {
+              "format" : "python",
+              "expression" : "(col(\"row_num\") == lit(1)) & col('tran_id').isNotNull()"
+            }
+          }
+        },
+        "cdonco1qZOWMvUuLxqa-5$$n8ES6e4DpYnP-DWAaYA_d" : {
+          "id" : "cdonco1qZOWMvUuLxqa-5$$n8ES6e4DpYnP-DWAaYA_d",
+          "component" : "WindowFunction",
+          "metadata" : {
+            "label" : "add_row_num",
+            "slug" : "add_row_num",
+            "x" : 215,
+            "y" : 324,
+            "language" : "scala",
+            "phase" : 0,
+            "cache" : false,
+            "detailedStats" : false
+          },
+          "ports" : {
+            "inputs" : [ {
+              "id" : "VTUOcAVFTDOAj__r6J1hS$$ErsoHioTXz3g8fhG_6CIU",
+              "slug" : "in"
+            } ],
+            "outputs" : [ {
+              "id" : "l1ZxskHbT3at-6Pi4rQ4b$$WKv5jhcaQmFTWzj8VdUFD",
+              "slug" : "out"
+            } ],
+            "selectedInputFields" : [ ]
+          },
+          "properties" : {
+            "userSpecifiedEnd" : null,
+            "expressionColumns" : [ {
+              "_row_id" : null,
+              "target" : "row_num",
+              "expression" : {
+                "format" : "python",
+                "expression" : "row_number()"
+              },
+              "description" : ""
+            } ],
+            "frameType" : "row",
+            "partitionColumns" : [ {
+              "format" : "python",
+              "expression" : "col(\"tran_id\")"
+            }, {
+              "format" : "python",
+              "expression" : "col(\"business_date\")"
+            } ],
+            "activeTab" : "windowFrame",
+            "columnsSelector" : [ "VTUOcAVFTDOAj__r6J1hS$$ErsoHioTXz3g8fhG_6CIU##tran_id", "VTUOcAVFTDOAj__r6J1hS$$ErsoHioTXz3g8fhG_6CIU##business_date", "VTUOcAVFTDOAj__r6J1hS$$ErsoHioTXz3g8fhG_6CIU##import_ts" ],
+            "specifyFrame" : false,
+            "frameStart" : null,
+            "orderColumns" : [ {
+              "expression" : {
+                "format" : "python",
+                "expression" : "col(\"import_ts\")"
+              },
+              "sortType" : "desc"
+            } ],
+            "frameEnd" : null,
+            "userSpecifiedStart" : null
+          }
+        }
+      }
+    },
+    "olD7ndfIWBueeNUyi3q_j$$6UYOxj1nFoTGDIrqDcR3F" : {
+      "id" : "olD7ndfIWBueeNUyi3q_j$$6UYOxj1nFoTGDIrqDcR3F",
+      "component" : "Subgraph",
+      "metadata" : {
+        "label" : "get_latest_2",
+        "slug" : "get_latest_2",
+        "x" : -640.375,
+        "y" : 61,
+        "language" : "scala",
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "1efwGngnWyOU0y3pXtRjc$$-jdhJ5RnJPvfW67AT2tw7",
+          "slug" : "in0"
+        } ],
+        "outputs" : [ {
+          "id" : "hAtDCkFJ43pt0wG_q09hD$$xnIQgzdaGO3V1MbGtyJRr",
+          "slug" : "out0"
+        } ],
+        "selectedInputFields" : [ ]
+      },
+      "properties" : { },
+      "connections" : [ {
+        "id" : "NMI7inb_POe2kIkJjxCLt",
+        "source" : "VhVMGmfDkCsou4E_y9Vdl$$-_XCKoWILK0gTNxfP5KLP",
+        "sourcePort" : "dycW-0zUDZUePrktaQ8tD$$QXBFqkJoKR5KYDds7e78O",
+        "target" : "K_W8M4WdHYoUUi8A-X93R$$QjvMbmaEjDX9hXGxiyzdd",
+        "targetPort" : "26LUXMLadSl57hH51t_lJ$$-Tf91JOYSfWIhHhG4CW5k"
+      }, {
+        "id" : "TvBFXBnuqLHxcLgAtb9nb",
+        "source" : "K_W8M4WdHYoUUi8A-X93R$$QjvMbmaEjDX9hXGxiyzdd",
+        "sourcePort" : "q0gKN_qdsAoj3qwdDbP3h$$aqij_aaU8q2LnYWWcPWsk",
+        "target" : "6FgltLNE153hKKoZDah_D$$3OOoc_c4_cWjSOhhskM5e",
+        "targetPort" : "-H-4jgwcPpHOzUOiu86kU$$R8kEfmoNdpi6Onr1iXnml"
+      }, {
+        "id" : "x3ETjs_W4YCDyx4-_TfGY",
+        "source" : "olD7ndfIWBueeNUyi3q_j$$6UYOxj1nFoTGDIrqDcR3F",
+        "sourcePort" : "1efwGngnWyOU0y3pXtRjc$$-jdhJ5RnJPvfW67AT2tw7",
+        "target" : "VhVMGmfDkCsou4E_y9Vdl$$-_XCKoWILK0gTNxfP5KLP",
+        "targetPort" : "l1QO6i2JQ8GUc4XU121h0$$cysfluBCB7TwEM6aLt6vZ"
+      }, {
+        "id" : "hW4DKnbNMtqcwL_SUQv1a",
+        "source" : "6FgltLNE153hKKoZDah_D$$3OOoc_c4_cWjSOhhskM5e",
+        "sourcePort" : "jEcrOKrrt8zCO7AvyEbL3$$ng4S3TCfsYMNPN2UHNNSN",
+        "target" : "olD7ndfIWBueeNUyi3q_j$$6UYOxj1nFoTGDIrqDcR3F",
+        "targetPort" : "hAtDCkFJ43pt0wG_q09hD$$xnIQgzdaGO3V1MbGtyJRr"
+      } ],
+      "processes" : {
+        "6FgltLNE153hKKoZDah_D$$3OOoc_c4_cWjSOhhskM5e" : {
+          "id" : "6FgltLNE153hKKoZDah_D$$3OOoc_c4_cWjSOhhskM5e",
+          "component" : "SchemaTransform",
+          "metadata" : {
+            "label" : "SchemaTransform_1_1_1",
+            "slug" : "SchemaTransform_1_1_1",
+            "x" : 713.5,
+            "y" : 292.5,
+            "language" : "scala",
+            "phase" : 0,
+            "cache" : false,
+            "detailedStats" : false
+          },
+          "ports" : {
+            "inputs" : [ {
+              "id" : "-H-4jgwcPpHOzUOiu86kU$$R8kEfmoNdpi6Onr1iXnml",
+              "slug" : "in"
+            } ],
+            "outputs" : [ {
+              "id" : "jEcrOKrrt8zCO7AvyEbL3$$ng4S3TCfsYMNPN2UHNNSN",
+              "slug" : "out"
+            } ],
+            "selectedInputFields" : [ ]
+          },
+          "properties" : {
+            "columnsSelector" : [ "DFct97hj1FWFbzaxGW2Aa$$iAwwRsNBFlHNAZD9XSryr##row_num" ],
+            "transformations" : [ {
+              "kind" : "DropColumn",
+              "DropColumn" : {
+                "sourceColumn" : "row_num"
+              },
+              "RenameColumn" : {
+                "sourceColumn" : "",
+                "targetColumn" : ""
+              },
+              "AddReplaceColumn" : {
+                "sourceColumn" : "",
+                "expression" : {
+                  "format" : "scala",
+                  "expression" : ""
+                }
+              }
+            } ]
+          }
+        },
+        "VhVMGmfDkCsou4E_y9Vdl$$-_XCKoWILK0gTNxfP5KLP" : {
+          "id" : "VhVMGmfDkCsou4E_y9Vdl$$-_XCKoWILK0gTNxfP5KLP",
+          "component" : "WindowFunction",
+          "metadata" : {
+            "label" : "WindowFunction_1_1_1",
+            "slug" : "WindowFunction_1_1_1",
+            "x" : 235,
+            "y" : 344,
+            "language" : "scala",
+            "phase" : 0,
+            "cache" : false,
+            "detailedStats" : false
+          },
+          "ports" : {
+            "inputs" : [ {
+              "id" : "l1QO6i2JQ8GUc4XU121h0$$cysfluBCB7TwEM6aLt6vZ",
+              "slug" : "in"
+            } ],
+            "outputs" : [ {
+              "id" : "dycW-0zUDZUePrktaQ8tD$$QXBFqkJoKR5KYDds7e78O",
+              "slug" : "out"
+            } ],
+            "selectedInputFields" : [ ]
+          },
+          "properties" : {
+            "userSpecifiedEnd" : null,
+            "expressionColumns" : [ {
+              "_row_id" : null,
+              "target" : "row_num",
+              "expression" : {
+                "format" : "python",
+                "expression" : "row_number()"
+              },
+              "description" : ""
+            } ],
+            "frameType" : "row",
+            "partitionColumns" : [ {
+              "format" : "python",
+              "expression" : "col(\"id\")"
+            }, {
+              "format" : "python",
+              "expression" : "col(\"business_date\")"
+            } ],
+            "activeTab" : "windowPartition",
+            "columnsSelector" : [ "l1QO6i2JQ8GUc4XU121h0$$cysfluBCB7TwEM6aLt6vZ##id", "l1QO6i2JQ8GUc4XU121h0$$cysfluBCB7TwEM6aLt6vZ##business_date", "l1QO6i2JQ8GUc4XU121h0$$cysfluBCB7TwEM6aLt6vZ##import_ts" ],
+            "specifyFrame" : false,
+            "frameStart" : null,
+            "orderColumns" : [ {
+              "expression" : {
+                "format" : "python",
+                "expression" : "col(\"import_ts\")"
+              },
+              "sortType" : "desc"
+            } ],
+            "frameEnd" : null,
+            "userSpecifiedStart" : null
+          }
+        },
+        "K_W8M4WdHYoUUi8A-X93R$$QjvMbmaEjDX9hXGxiyzdd" : {
+          "id" : "K_W8M4WdHYoUUi8A-X93R$$QjvMbmaEjDX9hXGxiyzdd",
+          "component" : "Filter",
+          "metadata" : {
+            "label" : "Filter_1_1_1",
+            "slug" : "Filter_1_1_1",
+            "x" : 445,
+            "y" : 336,
+            "language" : "scala",
+            "phase" : 0,
+            "cache" : false,
+            "detailedStats" : false
+          },
+          "ports" : {
+            "inputs" : [ {
+              "id" : "26LUXMLadSl57hH51t_lJ$$-Tf91JOYSfWIhHhG4CW5k",
+              "slug" : "in"
+            } ],
+            "outputs" : [ {
+              "id" : "q0gKN_qdsAoj3qwdDbP3h$$aqij_aaU8q2LnYWWcPWsk",
+              "slug" : "out"
+            } ],
+            "selectedInputFields" : [ ]
+          },
+          "properties" : {
+            "columnsSelector" : [ "26LUXMLadSl57hH51t_lJ$$-Tf91JOYSfWIhHhG4CW5k##row_num" ],
+            "condition" : {
+              "format" : "python",
+              "expression" : "(col(\"row_num\") == lit(1))"
+            }
+          }
+        }
+      }
+    },
+    "No-C64doiSU7K660l6-3-$$Id51SX5WLECbnQYrQUAhL" : {
+      "id" : "No-C64doiSU7K660l6-3-$$Id51SX5WLECbnQYrQUAhL",
+      "component" : "Source",
+      "metadata" : {
+        "label" : "People",
+        "slug" : "People",
+        "x" : -1187.6875,
+        "y" : 216.5,
+        "language" : "scala",
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "ZqCWzWAbty-OLelZTWQDO$$F1KQL7euEH8LbTRW2NTZ2",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ]
+      },
+      "properties" : {
+        "datasetId" : "4088/datasets/person_silver"
+      }
+    },
+    "5LstTl-x-VT2cuoWzdHFF$$-HDAo1h7_ij2PnQOGdkIr" : {
+      "id" : "5LstTl-x-VT2cuoWzdHFF$$-HDAo1h7_ij2PnQOGdkIr",
+      "component" : "Subgraph",
+      "metadata" : {
+        "label" : "get_latest_3",
+        "slug" : "get_latest_3",
+        "x" : -640.375,
+        "y" : 217,
+        "language" : "scala",
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "JEnowiFYyg8cFRuBsLFwR$$GZnmw-UWu406jWcWnb6Cr",
+          "slug" : "in0"
+        } ],
+        "outputs" : [ {
+          "id" : "O-hTC8Y9iFKqXuSY8gWT5$$wpN6Y-RoMereKYXCbUx3U",
+          "slug" : "out0"
+        } ],
+        "selectedInputFields" : [ ]
+      },
+      "properties" : { },
+      "connections" : [ {
+        "id" : "iNe7cZ87aHO6dib_V05dS",
+        "source" : "nmpnqcFoi__LILZXj1phc$$MD7yz962v8FuFfW2zBvOO",
+        "sourcePort" : "gdQEds1--ZzHjj4qkok4f$$UAhnX1rbNDU5kvXpAs2dt",
+        "target" : "IVWMvzQzspXwyq80skBE7$$eW6VHEj97RuQIPP33OsFM",
+        "targetPort" : "UU_d6LemnXTg_CjWlUCRo$$pVh30RB0IqwXWTu6z489M"
+      }, {
+        "id" : "_DDiEoKEMiXJ-H0qx1DwI",
+        "source" : "IVWMvzQzspXwyq80skBE7$$eW6VHEj97RuQIPP33OsFM",
+        "sourcePort" : "7CT_I1g60pe1wGVWsCVoL$$zhEHDxped0xNb8SIlk7hv",
+        "target" : "xbTOxtY0CWfGnzOqiLiJQ$$tkCILfms18a1_WVNiKrW3",
+        "targetPort" : "52EqHatuTtfjPXLQfwIHv$$0ArBE4J1UioaxtZRbtt7-"
+      }, {
+        "id" : "5lOSVYd8DN0YoCmVEvWY0",
+        "source" : "5LstTl-x-VT2cuoWzdHFF$$-HDAo1h7_ij2PnQOGdkIr",
+        "sourcePort" : "JEnowiFYyg8cFRuBsLFwR$$GZnmw-UWu406jWcWnb6Cr",
+        "target" : "nmpnqcFoi__LILZXj1phc$$MD7yz962v8FuFfW2zBvOO",
+        "targetPort" : "ll1KmbCqstuWEvyVWsDSe$$bL_kxIE4G6465_o45Q1RW"
+      }, {
+        "id" : "Rstai5eIJXKOsxYx9Qj62",
+        "source" : "xbTOxtY0CWfGnzOqiLiJQ$$tkCILfms18a1_WVNiKrW3",
+        "sourcePort" : "74sp3MEc_dtzEqjBUHoF6$$CqB5jzifvIvMvmnacJtlg",
+        "target" : "5LstTl-x-VT2cuoWzdHFF$$-HDAo1h7_ij2PnQOGdkIr",
+        "targetPort" : "O-hTC8Y9iFKqXuSY8gWT5$$wpN6Y-RoMereKYXCbUx3U"
+      } ],
+      "processes" : {
+        "nmpnqcFoi__LILZXj1phc$$MD7yz962v8FuFfW2zBvOO" : {
+          "id" : "nmpnqcFoi__LILZXj1phc$$MD7yz962v8FuFfW2zBvOO",
+          "component" : "WindowFunction",
+          "metadata" : {
+            "label" : "WindowFunction_1_1_1_1",
+            "slug" : "WindowFunction_1_1_1_1",
+            "x" : 255,
+            "y" : 364,
+            "language" : "scala",
+            "phase" : 0,
+            "cache" : false,
+            "detailedStats" : false
+          },
+          "ports" : {
+            "inputs" : [ {
+              "id" : "ll1KmbCqstuWEvyVWsDSe$$bL_kxIE4G6465_o45Q1RW",
+              "slug" : "in"
+            } ],
+            "outputs" : [ {
+              "id" : "gdQEds1--ZzHjj4qkok4f$$UAhnX1rbNDU5kvXpAs2dt",
+              "slug" : "out"
+            } ],
+            "selectedInputFields" : [ ]
+          },
+          "properties" : {
+            "userSpecifiedEnd" : null,
+            "expressionColumns" : [ {
+              "_row_id" : null,
+              "target" : "row_num",
+              "expression" : {
+                "format" : "python",
+                "expression" : "row_number()"
+              },
+              "description" : ""
+            } ],
+            "frameType" : "row",
+            "partitionColumns" : [ {
+              "format" : "python",
+              "expression" : "col(\"id\")"
+            }, {
+              "format" : "python",
+              "expression" : "col(\"business_date\")"
+            } ],
+            "activeTab" : "windowFrame",
+            "columnsSelector" : [ "ll1KmbCqstuWEvyVWsDSe$$bL_kxIE4G6465_o45Q1RW##id", "ll1KmbCqstuWEvyVWsDSe$$bL_kxIE4G6465_o45Q1RW##business_date", "ll1KmbCqstuWEvyVWsDSe$$bL_kxIE4G6465_o45Q1RW##import_ts" ],
+            "specifyFrame" : false,
+            "frameStart" : null,
+            "orderColumns" : [ {
+              "expression" : {
+                "format" : "python",
+                "expression" : "col(\"import_ts\")"
+              },
+              "sortType" : "desc"
+            } ],
+            "frameEnd" : null,
+            "userSpecifiedStart" : null
+          }
+        },
+        "xbTOxtY0CWfGnzOqiLiJQ$$tkCILfms18a1_WVNiKrW3" : {
+          "id" : "xbTOxtY0CWfGnzOqiLiJQ$$tkCILfms18a1_WVNiKrW3",
+          "component" : "SchemaTransform",
+          "metadata" : {
+            "label" : "SchemaTransform_1_1_1_1",
+            "slug" : "SchemaTransform_1_1_1_1",
+            "x" : 733.5,
+            "y" : 312.5,
+            "language" : "scala",
+            "phase" : 0,
+            "cache" : false,
+            "detailedStats" : false
+          },
+          "ports" : {
+            "inputs" : [ {
+              "id" : "52EqHatuTtfjPXLQfwIHv$$0ArBE4J1UioaxtZRbtt7-",
+              "slug" : "in"
+            } ],
+            "outputs" : [ {
+              "id" : "74sp3MEc_dtzEqjBUHoF6$$CqB5jzifvIvMvmnacJtlg",
+              "slug" : "out"
+            } ],
+            "selectedInputFields" : [ ]
+          },
+          "properties" : {
+            "columnsSelector" : [ "DFct97hj1FWFbzaxGW2Aa$$iAwwRsNBFlHNAZD9XSryr##row_num" ],
+            "transformations" : [ {
+              "kind" : "DropColumn",
+              "DropColumn" : {
+                "sourceColumn" : "row_num"
+              },
+              "RenameColumn" : {
+                "sourceColumn" : "",
+                "targetColumn" : ""
+              },
+              "AddReplaceColumn" : {
+                "sourceColumn" : "",
+                "expression" : {
+                  "format" : "scala",
+                  "expression" : ""
+                }
+              }
+            } ]
+          }
+        },
+        "IVWMvzQzspXwyq80skBE7$$eW6VHEj97RuQIPP33OsFM" : {
+          "id" : "IVWMvzQzspXwyq80skBE7$$eW6VHEj97RuQIPP33OsFM",
+          "component" : "Filter",
+          "metadata" : {
+            "label" : "Filter_1_1_1_1",
+            "slug" : "Filter_1_1_1_1",
+            "x" : 465,
+            "y" : 356,
+            "language" : "scala",
+            "phase" : 0,
+            "cache" : false,
+            "detailedStats" : false
+          },
+          "ports" : {
+            "inputs" : [ {
+              "id" : "UU_d6LemnXTg_CjWlUCRo$$pVh30RB0IqwXWTu6z489M",
+              "slug" : "in"
+            } ],
+            "outputs" : [ {
+              "id" : "7CT_I1g60pe1wGVWsCVoL$$zhEHDxped0xNb8SIlk7hv",
+              "slug" : "out"
+            } ],
+            "selectedInputFields" : [ ]
+          },
+          "properties" : {
+            "columnsSelector" : [ "26LUXMLadSl57hH51t_lJ$$-Tf91JOYSfWIhHhG4CW5k##row_num" ],
+            "condition" : {
+              "format" : "python",
+              "expression" : "(col(\"row_num\") == lit(1))"
+            }
+          }
+        }
+      }
+    }
+  },
+  "ports" : {
+    "inputs" : [ ],
+    "outputs" : [ ],
+    "selectedInputFields" : [ ]
+  }
+}

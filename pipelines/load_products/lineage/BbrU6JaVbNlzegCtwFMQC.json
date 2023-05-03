@@ -1,0 +1,55 @@
+{
+  "id" : "BbrU6JaVbNlzegCtwFMQC",
+  "name" : "BbrU6JaVbNlzegCtwFMQC",
+  "component" : "Filter",
+  "transformations" : [ {
+    "sources" : [ ],
+    "transformation" : "Filter((row_num#1308 = 1))"
+  } ],
+  "inputs" : {
+    "D1wIu2xsG9FSL3uiNnwES" : {
+      "columns" : [ {
+        "name" : "id",
+        "exprId" : 1303
+      }, {
+        "name" : "name",
+        "exprId" : 1304
+      }, {
+        "name" : "properties",
+        "exprId" : 1305
+      }, {
+        "name" : "slug",
+        "exprId" : 1306
+      }, {
+        "name" : "updated_at",
+        "exprId" : 1307
+      }, {
+        "name" : "row_num",
+        "exprId" : 1308
+      } ]
+    }
+  },
+  "outputs" : {
+    "rukEfio2rT9sVbcffzCVl" : {
+      "columns" : [ {
+        "name" : "id",
+        "exprId" : 1303
+      }, {
+        "name" : "name",
+        "exprId" : 1304
+      }, {
+        "name" : "properties",
+        "exprId" : 1305
+      }, {
+        "name" : "slug",
+        "exprId" : 1306
+      }, {
+        "name" : "updated_at",
+        "exprId" : 1307
+      }, {
+        "name" : "row_num",
+        "exprId" : 1308
+      } ]
+    }
+  }
+}

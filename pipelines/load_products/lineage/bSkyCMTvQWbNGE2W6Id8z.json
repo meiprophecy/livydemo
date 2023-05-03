@@ -1,0 +1,82 @@
+{
+  "id" : "bSkyCMTvQWbNGE2W6Id8z",
+  "name" : "bSkyCMTvQWbNGE2W6Id8z",
+  "component" : "Source",
+  "transformations" : [ {
+    "sources" : [ {
+      "port" : "",
+      "name" : "name",
+      "exprId" : -1
+    } ],
+    "destination" : {
+      "port" : "xIfWZ5LVPF0LSKgW-LeEL",
+      "name" : "name",
+      "exprId" : 2
+    }
+  }, {
+    "sources" : [ {
+      "port" : "",
+      "name" : "slug",
+      "exprId" : -1
+    } ],
+    "destination" : {
+      "port" : "xIfWZ5LVPF0LSKgW-LeEL",
+      "name" : "slug",
+      "exprId" : 4
+    }
+  }, {
+    "sources" : [ {
+      "port" : "",
+      "name" : "id",
+      "exprId" : -1
+    } ],
+    "destination" : {
+      "port" : "xIfWZ5LVPF0LSKgW-LeEL",
+      "name" : "id",
+      "exprId" : 1
+    }
+  }, {
+    "sources" : [ {
+      "port" : "",
+      "name" : "properties",
+      "exprId" : -1
+    } ],
+    "destination" : {
+      "port" : "xIfWZ5LVPF0LSKgW-LeEL",
+      "name" : "properties",
+      "exprId" : 3
+    }
+  }, {
+    "sources" : [ {
+      "port" : "",
+      "name" : "updated_at",
+      "exprId" : -1
+    } ],
+    "destination" : {
+      "port" : "xIfWZ5LVPF0LSKgW-LeEL",
+      "name" : "updated_at",
+      "exprId" : 5
+    }
+  } ],
+  "inputs" : { },
+  "outputs" : {
+    "xIfWZ5LVPF0LSKgW-LeEL" : {
+      "columns" : [ {
+        "name" : "name",
+        "exprId" : 2
+      }, {
+        "name" : "slug",
+        "exprId" : 4
+      }, {
+        "name" : "id",
+        "exprId" : 1
+      }, {
+        "name" : "properties",
+        "exprId" : 3
+      }, {
+        "name" : "updated_at",
+        "exprId" : 5
+      } ]
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id" : "Da_57WI5dXLJ3bL6Is_II",
+  "name" : "Da_57WI5dXLJ3bL6Is_II",
+  "component" : "Filter",
+  "transformations" : [ {
+    "sources" : [ ],
+    "transformation" : "Filter(NOT (bal_change#10447 = signed_tran_amount#10446))"
+  } ],
+  "inputs" : {
+    "U_bd_E7wyVoHWTGvBxGkg" : {
+      "columns" : [ {
+        "name" : "acc_id",
+        "exprId" : 10444
+      }, {
+        "name" : "business_date",
+        "exprId" : 10445
+      }, {
+        "name" : "signed_tran_amount",
+        "exprId" : 10446
+      }, {
+        "name" : "bal_change",
+        "exprId" : 10447
+      } ]
+    }
+  },
+  "outputs" : {
+    "cyxt5nu_a8Mv5UaMx7Frh" : {
+      "columns" : [ {
+        "name" : "acc_id",
+        "exprId" : 10444
+      }, {
+        "name" : "business_date",
+        "exprId" : 10445
+      }, {
+        "name" : "signed_tran_amount",
+        "exprId" : 10446
+      }, {
+        "name" : "bal_change",
+        "exprId" : 10447
+      } ]
+    }
+  }
+}

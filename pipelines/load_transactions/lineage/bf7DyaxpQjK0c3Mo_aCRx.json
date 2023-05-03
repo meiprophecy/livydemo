@@ -1,0 +1,61 @@
+{
+  "id" : "bf7DyaxpQjK0c3Mo_aCRx",
+  "name" : "bf7DyaxpQjK0c3Mo_aCRx",
+  "component" : "Filter",
+  "transformations" : [ {
+    "sources" : [ ],
+    "transformation" : "Filter((row_num#10234 = 1))"
+  } ],
+  "inputs" : {
+    "G8pG2AR31Pi0IHMmBYT7k" : {
+      "columns" : [ {
+        "name" : "acc_id",
+        "exprId" : 10228
+      }, {
+        "name" : "person_id",
+        "exprId" : 10229
+      }, {
+        "name" : "product_id",
+        "exprId" : 10230
+      }, {
+        "name" : "balance",
+        "exprId" : 10231
+      }, {
+        "name" : "business_date",
+        "exprId" : 10232
+      }, {
+        "name" : "import_ts",
+        "exprId" : 10233
+      }, {
+        "name" : "row_num",
+        "exprId" : 10234
+      } ]
+    }
+  },
+  "outputs" : {
+    "wMsTxz_hUtCwtdMLKVcGP" : {
+      "columns" : [ {
+        "name" : "acc_id",
+        "exprId" : 10228
+      }, {
+        "name" : "person_id",
+        "exprId" : 10229
+      }, {
+        "name" : "product_id",
+        "exprId" : 10230
+      }, {
+        "name" : "balance",
+        "exprId" : 10231
+      }, {
+        "name" : "business_date",
+        "exprId" : 10232
+      }, {
+        "name" : "import_ts",
+        "exprId" : 10233
+      }, {
+        "name" : "row_num",
+        "exprId" : 10234
+      } ]
+    }
+  }
+}
